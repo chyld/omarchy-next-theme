@@ -2,13 +2,17 @@
 
 A single bar icon that steps through your Omarchy themes in order.
 
-- **Left click** — apply the next theme in `omarchy theme list`, wrapping at the end.
-- **Scroll** — step backwards, for when you click one too far.
-- **Hover** — the tooltip names the current theme and both gestures.
+- **Left click** — open a popup naming the current theme, with Previous and
+  Next buttons that step through `omarchy theme list`, wrapping at the ends.
+- **Scroll** — step forward or back without opening the popup.
+- **Hover** — the tooltip names the current theme.
 
-Right and middle clicks do nothing. No popup, no settings, no schedule. If you
-want random rotation or sunrise/sunset switching, use `tim.theme-rotate`
-instead — this one is deliberately just "forward one".
+The popup stays open while you step, and its name and colours follow each
+theme as it is applied, so you can walk the list and stop where you like.
+
+Right and middle clicks do nothing. No settings, no schedule. If you want
+random rotation or sunrise/sunset switching, use `tim.theme-rotate` instead —
+this one is deliberately just "one step at a time".
 
 ## The icon
 
@@ -39,6 +43,8 @@ configuration and reloads the shell. This plugin never edits those files itself.
   deadline with its output capped at the producer.
 - **On load:** reads the current theme name. Nothing is installed, downloaded,
   built or written when the plugin starts.
+- **IPC:** `open`, `close`, `toggle`, `show` and `hide`, all parameterless and
+  limited to showing or hiding the popup. None of them change a theme.
 
 Theme names are directory names, and `omarchy theme install <git-url>` lets a
 third party choose one. They are treated as untrusted: the helper refuses names
@@ -65,7 +71,7 @@ it afterwards, use `omarchy theme set <name>` or the theme switcher.
 
 | File | Purpose |
 |------|---------|
-| `BarWidget.qml` | The icon, its rotation, and click/scroll handling |
+| `BarWidget.qml` | The icon, its rotation, the popup, and click/scroll handling |
 | `bin/next-theme.sh` | Resolves the next, previous, or current theme and applies it |
 | `tests/` | Validator and sanitiser cases, run with the commands below |
 

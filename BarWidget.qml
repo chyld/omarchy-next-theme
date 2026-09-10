@@ -20,9 +20,10 @@ import qs.Ui
 // Everything here shares one process with the rest of the bar, so each helper
 // runs in its own session under an absolute deadline with its output capped at
 // the producer, and is reaped on overflow, supersession and destruction.
-BarWidget {
+Panel {
   id: root
   moduleName: "chyld.next-theme"
+  ipcTarget: "chyld.next-theme"
 
   readonly property int sigTerm: 15
   readonly property int sigKill: 9
@@ -149,10 +150,14 @@ BarWidget {
     root.pushTooltip()
   }
 
+  readonly property string panelFontFamily: root.bar ? root.bar.fontFamily : Style.font.family
+
+  visible: true
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
 
   Component.onCompleted: refreshCurrent()
+  onOpenedChanged: if (opened) refreshCurrent()
 
   // Reap owned descendants rather than leaving them parented to the bar.
   Component.onDestruction: {
@@ -245,12 +250,12 @@ BarWidget {
     anchors.fill: parent
     bar: root.bar
     slotSize: Style.bar.iconSlot
-    tooltipText: root.currentTheme === "" ? "Next Theme" : "Theme: " + root.currentTheme + " (click for next, scroll for previous)"
+    tooltipText: root.currentTheme === "" ? "Next Theme" : "Theme: " + root.currentTheme
 
-    // Only the left button steps. WidgetButton reports right and middle
-    // clicks through this same signal, and neither should change a theme.
+    // Only the left button opens the popup. WidgetButton reports right and
+    // middle clicks through this same signal, and neither should act.
     onPressed: function(mouseButton) {
-      if (mouseButton === Qt.LeftButton) root.step(false)
+      if (mouseButton === Qt.LeftButton) root.toggle()
     }
 
     // Touchpads emit many small deltas per gesture, so accumulate to whole
@@ -314,6 +319,94 @@ BarWidget {
             color: glyph.ink
             antialiasing: true
           }
+        }
+      }
+    }
+  }
+
+  KeyboardPanel {
+    id: popup
+    anchorItem: button
+    owner: root
+    bar: root.bar
+    open: root.opened
+    focusTarget: keyCatcher
+    contentWidth: popup.fittedContentWidth(Style.space(260))
+    contentHeight: popup.fittedContentHeight(column.implicitHeight)
+
+    PanelKeyCatcher {
+      id: keyCatcher
+      anchors.fill: parent
+      onCloseRequested: root.close()
+      onTabRequested: function(direction) { root.switchPanel(direction) }
+
+      Column {
+        id: column
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        spacing: Style.space(10)
+
+        PanelSectionHeader {
+          text: "CURRENT THEME"
+          foreground: Color.popups.text
+          fontFamily: root.panelFontFamily
+        }
+
+        // Popup text reads from the popup palette, not the bar's foreground:
+        // a theme whose bar sits on the wallpaper can pair a dark bar
+        // foreground with a dark popup surface.
+        Text {
+          width: parent.width
+          textFormat: Text.PlainText
+          elide: Text.ElideRight
+          text: root.currentTheme === "" ? "—" : root.currentTheme
+          color: Color.popups.text
+          font.family: root.panelFontFamily
+          font.pixelSize: Style.font.body
+          font.bold: true
+        }
+
+        PanelSeparator { foreground: Color.popups.text }
+
+        Row {
+          id: actions
+          width: parent.width
+          spacing: Style.space(8)
+
+          Button {
+            width: (actions.width - actions.spacing) / 2
+            text: "Previous"
+            bordered: true
+            foreground: Color.popups.text
+            accent: Color.accent
+            fontFamily: root.panelFontFamily
+            fontSize: Style.font.bodySmall
+            onClicked: root.step(true)
+          }
+
+          Button {
+            width: (actions.width - actions.spacing) / 2
+            text: "Next"
+            bordered: true
+            foreground: Color.popups.text
+            accent: Color.accent
+            fontFamily: root.panelFontFamily
+            fontSize: Style.font.bodySmall
+            iconSpinning: root.busy
+            onClicked: root.step(false)
+          }
+        }
+
+        Text {
+          width: parent.width
+          textFormat: Text.PlainText
+          wrapMode: Text.WordWrap
+          text: "Scroll the icon to step without opening this."
+          color: Color.popups.text
+          opacity: 0.5
+          font.family: root.panelFontFamily
+          font.pixelSize: Style.font.caption
         }
       }
     }
