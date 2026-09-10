@@ -1,6 +1,6 @@
 # Next Theme
 
-Omarchy ships forty-one themes. Their names — Miasma, Vantablack, Waffle Cat, Osaka Jade — tell you almost nothing about what they look like, and a theme is not a row in a list: it is your terminal, your editor, your borders, your bar and your wallpaper, all changing at once. The only honest way to judge one is to wear it for a minute. Next Theme makes that cost one click. Step forward through the themes, watch your whole desktop change under you, and stop when it looks right.
+Omarchy ships a long list of themes. Their names — Miasma, Vantablack, Waffle Cat, Osaka Jade — tell you almost nothing about what they look like, and a theme is not a row in a list: it is your terminal, your editor, your borders, your bar and your wallpaper, all changing at once. The only honest way to judge one is to wear it for a minute. Next Theme makes that cost one click. Step forward through the themes, watch your whole desktop change under you, and stop when it looks right.
 
 ![The Next Theme popup under the Retro 82 theme, naming the current theme above Previous and Next buttons](preview.png)
 
