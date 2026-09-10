@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "chyld.next-theme",
+  "name": "Next Theme",
+  "version": "1.0.0",
+  "author": "Chyld Medford",
+  "license": "MIT",
+  "description": "One click, one theme forward. A half-filled contrast circle in the bar that steps through `omarchy theme list` in order and flips itself over as the new theme lands. Scroll it to walk back. No popup, no menu, no settings — just the next theme.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Next Theme",
+    "description": "Click to apply the next theme in the list; scroll to go back.",
+    "category": "Appearance",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}
