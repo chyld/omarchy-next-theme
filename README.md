@@ -12,7 +12,28 @@ Every step is the real thing — a full `omarchy theme set`, applied everywhere 
 - **Scroll the icon** — step forward or back without opening anything.
 - **Hover** — the tooltip names the theme you are on.
 
-Right and middle clicks do nothing. There are no settings, no schedule and nothing to configure: it never changes a theme on its own, only when you ask it to. If you want rotation on a timer or on sunrise and sunset, that is a different plugin's job.
+Right and middle clicks do nothing. There are no settings, no schedule and nothing to configure: it never changes a theme on its own, only when you ask it to.
+
+## Why stepping, not shuffling
+
+Other Omarchy plugins will pick a theme for you at random, on demand or on a
+schedule. They are good at a different job: surprise, or set-and-forget variety
+you never have to think about. Next Theme is for the moment you are actually
+choosing, and choosing is a search, not a lottery.
+
+- **You can go back.** Overshot the one you liked? **Previous** returns to it
+  exactly. A random draw has no previous — the theme you liked is gone until
+  chance happens to return it.
+- **You see everything, once.** Stepping reaches every theme in as many steps as
+  there are themes. Random draws keep re-picking ones you have already rejected
+  while leaving others undrawn, so seeing the whole set takes several times more
+  picks than the list is long.
+- **You always know where you are.** The order never changes and the popup names
+  the theme you are on, so "a couple back from here" means something. A shuffle
+  gives you nothing to reason from.
+
+If you want a theme chosen for you, use a shuffler — they are better at that.
+If you want to choose one yourself, step.
 
 ## The icon
 
