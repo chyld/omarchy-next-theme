@@ -5,7 +5,7 @@
   "version": "1.1.0",
   "author": "Chyld Medford",
   "license": "MIT",
-  "description": "Omarchy ships a long list of themes, and names like Miasma, Lumon and Ristretto tell you nothing about how they look. Next Theme puts a contrast circle in your bar: click it for a popup with Previous and Next, or just scroll the icon. Every step applies the real theme to your whole desktop, and the popup stays open and re-colours itself as you browse, so you can walk the list and stop when it looks right.",
+  "description": "Omarchy ships a long list of themes, and names like Miasma, Lumon and Ristretto tell you nothing about how they look. Next Theme puts a contrast circle in your bar: click it for a popup with Previous and Next, or just scroll the icon. Every step applies the real theme to your whole desktop, and the popup stays open and re-colours itself as you browse. It steps in order and never shuffles, so you can walk back to the one you just passed and a single pass shows you every theme exactly once.",
   "kinds": [
     "bar-widget"
   ],
