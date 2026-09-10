@@ -276,7 +276,7 @@ Panel {
         id: glyph
 
         readonly property color ink: button.foreground
-        readonly property real diameter: Math.min(width, height) - 1
+        readonly property real diameter: (Math.min(width, height) - 1) * 0.90
         readonly property real stroke: 1.25
 
         rotation: root.flip
