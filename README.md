@@ -1,31 +1,30 @@
 # Next Theme
 
-A single bar icon that steps through your Omarchy themes in order.
+Omarchy ships forty-one themes. Their names — Miasma, Vantablack, Waffle Cat, Osaka Jade — tell you almost nothing about what they look like, and a theme is not a row in a list: it is your terminal, your editor, your borders, your bar and your wallpaper, all changing at once. The only honest way to judge one is to wear it for a minute. Next Theme makes that cost one click. Step forward through the themes, watch your whole desktop change under you, and stop when it looks right.
 
-- **Left click** — open a popup naming the current theme, with Previous and
-  Next buttons that step through `omarchy theme list`, wrapping at the ends.
-- **Scroll** — step forward or back without opening the popup.
-- **Hover** — the tooltip names the current theme.
+![The Next Theme popup under the Retro 82 theme, naming the current theme above Previous and Next buttons](preview.png)
 
-The popup stays open while you step, and its name and colours follow each
-theme as it is applied, so you can walk the list and stop where you like.
+Every step is the real thing — a full `omarchy theme set`, applied everywhere — not a swatch or a preview. The popup stays open while you browse and re-colours itself as each theme lands, so the window you are choosing from is itself a sample of the theme you are choosing.
 
-Right and middle clicks do nothing. No settings, no schedule. If you want
-random rotation or sunrise/sunset switching, use `tim.theme-rotate` instead —
-this one is deliberately just "one step at a time".
+## How it works
+
+- **Left click** — open the popup, then use **Previous** and **Next** to step through `omarchy theme list`, wrapping at the ends.
+- **Scroll the icon** — step forward or back without opening anything.
+- **Hover** — the tooltip names the theme you are on.
+
+Right and middle clicks do nothing. There are no settings, no schedule and nothing to configure: it never changes a theme on its own, only when you ask it to. If you want rotation on a timer or on sunrise and sunset, that is a different plugin's job.
 
 ## The icon
 
-The classic contrast circle: an outlined ring with its right half filled. Every
-applied theme rotates it a half turn clockwise, so the light and dark halves
-trade places. If the change fails, the icon rotates back rather than leaving a
-flip that claims something happened.
+The classic contrast circle: an outlined ring with its right half filled. Every applied theme rotates it a half turn clockwise, so the light and dark halves trade places. If the change fails, the icon rotates back rather than leaving a flip that claims something happened.
 
 ## Install
 
+```sh
+omarchy plugin add https://github.com/chyld/omarchy-next-theme.git --enable
 ```
-omarchy plugin add https://github.com/<owner>/omarchy-next-theme --enable
-```
+
+Nothing else to install. Every theme it steps through is one Omarchy already has.
 
 ## What it does to your system
 
@@ -56,7 +55,7 @@ reaches the bar tooltip.
 
 Run:
 
-```
+```sh
 omarchy plugin remove chyld.next-theme
 ```
 
@@ -77,7 +76,7 @@ it afterwards, use `omarchy theme set <name>` or the theme switcher.
 
 ## Tests
 
-```
+```sh
 tests/validate-name.test.sh
 node tests/sanitize.test.mjs
 ```
