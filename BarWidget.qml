@@ -245,7 +245,7 @@ BarWidget {
     anchors.fill: parent
     bar: root.bar
     slotSize: Style.bar.iconSlot
-    tooltipText: root.currentTheme === "" ? "Next theme" : "Current theme: " + root.currentTheme + ", click for next, scroll for previous"
+    tooltipText: root.currentTheme === "" ? "Next theme" : "Current theme: " + root.currentTheme + "\nClick for next, scroll for previous"
 
     // Only the left button steps. WidgetButton reports right and middle
     // clicks through this same signal, and neither should change a theme.

@@ -4,7 +4,7 @@ A single bar icon that steps through your Omarchy themes in order.
 
 - **Left click** — apply the next theme in `omarchy theme list`, wrapping at the end.
 - **Scroll** — step backwards, for when you click one too far.
-- **Hover** — the tooltip names the current theme and both gestures.
+- **Hover** — a two-line tooltip: the current theme, then both gestures.
 
 Right and middle clicks do nothing. No popup, no settings, no schedule. If you
 want random rotation or sunrise/sunset switching, use `tim.theme-rotate`
